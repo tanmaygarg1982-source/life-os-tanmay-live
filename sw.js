@@ -1,4 +1,4 @@
-const CACHE_NAME = 'life-os-shell-v2';
+const CACHE_NAME = 'life-os-shell-v3';
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
@@ -26,3 +26,5 @@ self.addEventListener('fetch', event => {
     }
   })());
 });
+
+self.addEventListener('notificationclick',event=>{event.notification.close();event.waitUntil((async()=>{const windows=await self.clients.matchAll({type:'window',includeUncontrolled:true});for(const client of windows){if(client.url.startsWith(self.registration.scope)&&'focus'in client)return client.focus()}return self.clients.openWindow(self.registration.scope)})())});
