@@ -1,4 +1,4 @@
-const CACHE_NAME = 'life-os-shell-v7';
+const CACHE_NAME = 'life-os-shell-v8';
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
